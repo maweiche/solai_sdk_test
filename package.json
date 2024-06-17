@@ -9,11 +9,13 @@
     "anchor-test": "nx run anchor:anchor test",
     "feature": "nx generate @solana-developers/preset-react:feature",
     "build": "nx build web",
-    "dev": "nx serve web"
+    "dev": "nx serve web",
+    "reset": "nx reset"
   },
   "private": true,
   "dependencies": {
     "@coral-xyz/anchor": "^0.30.0",
+    "@maweiche/react-sdk": "^1.0.2",
     "@project-serum/anchor": "^0.26.0",
     "@solana-developers/preset-next": "3.0.1",
     "@solana/spl-token": "0.4.6",

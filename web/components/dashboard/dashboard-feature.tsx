@@ -2,7 +2,7 @@
 
 import { AppHero } from '../ui/ui-layout';
 import { useWallet } from '@solana/wallet-adapter-react';
-import { SDK } from '@solai/react-sdk';
+import { SDK } from '@maweiche/react-sdk';
 import { Keypair, Connection, PublicKey, Transaction } from '@solana/web3.js';
 import { Wallet } from '@project-serum/anchor';
 

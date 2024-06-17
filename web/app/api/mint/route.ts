@@ -1,12 +1,13 @@
 import NodeWallet from "@coral-xyz/anchor/dist/cjs/nodewallet";
 import { Keypair, Connection, PublicKey, Transaction } from '@solana/web3.js';
-import { SDK } from '@solai/react-sdk';
+import { SDK } from '@maweiche/react-sdk';
 import base58, * as bs58 from "bs58";
 import dotenv from 'dotenv';
 dotenv.config()
 export async function POST(request: Request) {
     const body = await request.json();
     const id = body.id;
+    const collectionOwner = new PublicKey(body.collectionOwner);
     const publicKey = new PublicKey(body.publicKey);
 
     const keypair1 = process.env.KEYPAIR1 as string;
@@ -31,7 +32,7 @@ export async function POST(request: Request) {
     const base64txn = await sdk.placeholder.createPlaceholder(
         connection,
         admin2Keypair,
-        admin3KeyPair.publicKey,
+        collectionOwner,
         publicKey,
         id,
         'www.example.com'
