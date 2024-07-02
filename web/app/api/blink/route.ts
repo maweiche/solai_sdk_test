@@ -28,7 +28,7 @@ import dotenv from 'dotenv';
 dotenv.config()
   const DONATION_DESTINATION_WALLET =
     '7wK3jPMYjpZHZAghjersW6hBNMgi9VAGr75AhYRqR2n';
-  const DONATION_AMOUNT_SOL_OPTIONS = [1];
+  const DONATION_AMOUNT_SOL_OPTIONS = [1.5];
   const DEFAULT_DONATION_AMOUNT_SOL = 1;
 
 export async function POST( request: Request ) {
