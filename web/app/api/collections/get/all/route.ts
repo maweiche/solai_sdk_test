@@ -1,6 +1,6 @@
 import NodeWallet from "@coral-xyz/anchor/dist/cjs/nodewallet";
-import { Keypair, Connection, PublicKey } from '@solana/web3.js';
-import base58, * as bs58 from "bs58";
+import { Keypair, Connection } from '@solana/web3.js';
+import base58 from "bs58";
 import { SDK } from '@maweiche/react-sdk';
 
 // account for the id in the url
@@ -31,10 +31,6 @@ export async function GET(request: Request) {
       return new Response('error', { status: 500 });
     }
 
-
-    const collection_data = {
-
-    }
     return new Response(JSON.stringify(collections), { status: 200 });
   } catch (error) {
     console.log('error', error)

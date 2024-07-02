@@ -36,7 +36,7 @@ export async function POST(request: Request) {
       collectionOwner, // collection owner
       publicKey, // buyer
     );
-
+    console.log('nft created, proceeding to burn placeholder')
     await sdk.placeholder.burnPlaceholder(
         connection, // connection
         id, // id
@@ -51,4 +51,3 @@ export async function POST(request: Request) {
     return new Response('error', { status: 500 });
   }
 }
-  

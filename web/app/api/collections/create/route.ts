@@ -3,24 +3,9 @@ import { Keypair, Connection, PublicKey, Transaction } from '@solana/web3.js';
 import { SDK } from '@maweiche/react-sdk';
 import * as anchor from '@project-serum/anchor';
 import base58, * as bs58 from "bs58";
-import dotenv from 'dotenv';
-dotenv.config()
+
 export async function POST(request: Request) {
     const body = await request.json();
-    // public async createCollection(
-    //     connection: Connection,
-    //     owner: PublicKey,
-    //     name: string,
-    //     symbol: string,
-    //     sale_start_time: anchor.BN,
-    //     max_supply: anchor.BN,
-    //     price: anchor.BN,
-    //     stable_id: string,
-    //     reference: string,
-    //     whitelist?: PublicKey[] | undefined,
-    //     whitelist_price?: anchor.BN | undefined,
-    //     whitelist_start_time?: anchor.BN | undefined,
-    // )
     const owner = new PublicKey(body.owner);
     const name = body.name;
     const symbol = body.symbol;
@@ -84,6 +69,7 @@ export async function POST(request: Request) {
       });
     const base64 = serializedTransaction.toString("base64");
     const base64JSON = JSON.stringify(base64);
+    
     return new Response(base64JSON, { status: 200 });
   }
   
