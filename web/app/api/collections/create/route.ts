@@ -13,7 +13,7 @@ export async function POST(request: Request) {
     const max_supply = new anchor.BN(body.max_supply);
     const price = new anchor.BN(body.price);
     const stable_id = body.stable_id;
-    const reference = body.reference;
+    const url = body.url;
 
     console.log('owner', owner.toBase58())
     console.log('name', name)
@@ -22,12 +22,6 @@ export async function POST(request: Request) {
     console.log('max_supply', max_supply)
     console.log('price', price)
     console.log('stable_id', stable_id)
-    console.log('reference', reference)
-
-
-    const whitelist = body.whitelist ? body.whitelist : undefined;
-    const whitelist_price = body.whitelist_price ? new anchor.BN(body.whitelist_price) : undefined;
-    const whitelist_start_time = body.whitelist_start_time ? new anchor.BN(body.whitelist_start_time) : undefined;
 
     const keypair1 = process.env.KEYPAIR1 as string;
     const keypair2 = process.env.KEYPAIR2 as string;
@@ -48,22 +42,18 @@ export async function POST(request: Request) {
         { skipPreflight: true},
         "devnet",
     )
-    const base64txn = await sdk.collection.createCollection(
-        connection,
-        collectionRefKey,
+    const _tx = await sdk.collection.createCollection(
+        admin2Wallet.publicKey,
         owner,
         name,
         symbol,
+        url,
         sale_start_time,
         max_supply,
         price,
         stable_id,
-        whitelist,
-        whitelist_price,
-        whitelist_start_time
     );
-    console.log('base64txn', base64txn)
-    const tx = Transaction.from(Buffer.from(base64txn, "base64"));
+    const tx = new Transaction().add(_tx.instructions[0]);
     const serializedTransaction = tx.serialize({
         requireAllSignatures: false,
       });

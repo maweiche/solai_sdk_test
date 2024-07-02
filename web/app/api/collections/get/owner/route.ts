@@ -46,10 +46,6 @@ export async function POST(request: Request) {
       price: collection.price.toString(),
       stableId: collection.stableId,
       reference: collection.reference,
-      whitelist: collection.whitelist.wallets.map((wallet: PublicKey) => wallet.toBase58()),
-      whitelistStartTime: collection.whitelistStartTime.toString(),
-      whitelistPrice: collection.whitelistPrice.toString()
-    
     }
     console.log('programid', programID)
     return new Response(JSON.stringify(collection_data), { status: 200 });

@@ -71,7 +71,7 @@ export async function POST( request: Request ) {
 
     const placeholder_tx = await sdk.placeholder.createPlaceholder(
         sdk.rpcConnection,
-        userKeypair,
+        userKeypair.publicKey,
         collection_owner,
         admin2Wallet.publicKey,
         id,

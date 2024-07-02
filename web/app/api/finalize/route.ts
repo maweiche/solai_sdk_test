@@ -30,20 +30,14 @@ export async function POST(request: Request) {
 
     const createNft = await sdk.nft.createNft(
       connection, // connection
-      "https://amin.stable-dilution.art/nft/item/generation/3/11/0xf75e77b4EfD56476708792066753AC428eB0c21c", // url for ai image
       bearerToken, // bearer
-      admin2Keypair, // admin
+      admin2Keypair.publicKey, // admin
       collectionOwner, // collection owner
       publicKey, // buyer
+      id // id
     );
     console.log('nft created, proceeding to burn placeholder')
-    await sdk.placeholder.burnPlaceholder(
-        connection, // connection
-        id, // id
-        admin2Keypair,  // admin
-        publicKey, // buyer
-        collectionOwner  // collection owner
-    );
+
 
     return new Response(JSON.stringify(createNft), { status: 200 });
   } catch (error) {

@@ -29,15 +29,14 @@ export async function POST(request: Request) {
         { skipPreflight: true},
         "devnet",
     )
-    const base64txn = await sdk.placeholder.createPlaceholder(
+    const _tx = await sdk.placeholder.createPlaceholder(
         connection,
-        admin2Keypair,
+        admin2Keypair.publicKey,
         collectionOwner,
         publicKey,
         id,
-        'www.example.com'
       );
-    const tx = Transaction.from(Buffer.from(base64txn, "base64"));
+      const tx = new Transaction().add(_tx.instructions[0]);
     tx.partialSign(admin2Keypair);
     const serializedTransaction = tx.serialize({
         requireAllSignatures: false,
