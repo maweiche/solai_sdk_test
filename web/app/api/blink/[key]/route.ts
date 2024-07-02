@@ -83,19 +83,19 @@ import dotenv from 'dotenv';
 
     console.log('placeholder_tx', placeholder_tx);
 
-    // const _tx = await sdk.nft.createNft(
-    //     sdk.rpcConnection,  // connection: Connection,
-    //     process.env.BEARER!, // bearer
-    //     userKeypair.publicKey, // admin
-    //     collection_owner, // collection owner
-    //     buyer, // buyer   
-    //     id 
-    // ); 
+    const _tx = await sdk.nft.createNft(
+        sdk.rpcConnection,  // connection: Connection,
+        process.env.BEARER!, // bearer
+        userKeypair.publicKey, // admin
+        collection_owner, // collection owner
+        buyer, // buyer   
+        id 
+    ); 
 
         
     const instructions = [
         ...placeholder_tx.instructions, 
-        // ..._tx.instructions
+        ..._tx.instructions
     ];
     const transaction = await prepareTransaction(instructions, buyer);
     console.log('admin2Wallet signing', admin2Wallet.publicKey.toBase58());
