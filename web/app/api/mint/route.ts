@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 dotenv.config()
 export async function POST(request: Request) {
     const body = await request.json();
+    console.log('body', body);
     const id = body.id;
     const collectionOwner = new PublicKey(body.collectionOwner);
     const publicKey = new PublicKey(body.publicKey);

@@ -186,17 +186,7 @@ export default function Page() {
                       <h3 className="text-lg font-bold">Stable ID</h3>
                       <div>{collection.stableId}</div>
                       <h3 className="text-lg font-bold">Total Supply</h3>
-                      <div>{collection.totalSupply}</div>
-                      <h3 className="text-lg font-bold">Whitelist</h3>
-                      <div className="flex flex-col">
-                        {collection.whitelist.wallets.map((wallet: string, index) => (
-                          <span key={index}>{wallet.slice(0,4)}...{wallet.slice(-4)}</span>
-                        ))}
-                      </div>
-                      <h3 className="text-lg font-bold">Whitelist Price</h3>
-                      <div>{collection.whitelistPrice}</div>
-                      <h3 className="text-lg font-bold">Whitelist Start Time</h3>
-                      <div>{new Date(parseInt(collection.whitelistStartTime)).toLocaleString()}</div>
+                      <div>{collection.totalSupply}</div>                     
                     </div>
                   ))}
                 </div>
